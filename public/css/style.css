@@ -80,12 +80,12 @@ h2 {
     -webkit-background-size: cover;
     background-size: cover;
     -moz-background-size: cover;
-    min-height: 600px;
+    min-height: 400px;
 }
 
     #home-sec .overlay {
         background-color: rgba(149, 166, 248, 0.75);
-        min-height: 600px;
+        min-height: 400px;
     }
 
     #home-sec h1 {
