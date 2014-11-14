@@ -4,9 +4,13 @@ require 'sinatra/reloader' if development?
 #set :environment, :production
 
 chat = ['welcome..']
-@online_users = []
 
 get('/') { erb :index }
+
+get '/chat' do
+   @users_on = []
+   erb :chat
+end
 
 get '/send' do
   return [404, {}, "Not an ajax request"] unless request.xhr?
