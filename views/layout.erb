@@ -20,30 +20,35 @@
 	  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
    </head>
    <body>
-   	<div class="navbar navbar-inverse navbar-fixed-top scrollclass">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Inicio</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                	<li><a href="#advance-sec">Repository</a></li>
-                    <li><a href="#advance-sec">Rules</a></li>
-                    <li><a href="#gallery-sec">Help</a></li>
-                    <li><a href="/">Logout</a></li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-    <!--END NAB BAR SECTION-->
 	  <%= yield %>
-
+	  
+	  <!-- Rules -->
+	  <section id="features-sec">
+		 <div id="rules" class="container">
+			<div class="row text-center min-set">
+			   <div class="col-md-12">
+				  <h2><mark class="head-glow">RULES </mark> CHAT</h2>
+				  <hr class="sub-hr">
+				  <div class="row">
+					 <img src="/img/1.png" class="img-set">
+					 <h3>Respeta las normas</h3>
+					 <hr>
+					 <div style="text-align:left">
+                        <ul>
+						   <li>Para ingresar escribe tu nickname en la seccion de entrada. Si ese nick esta en uso tendras que escoger otro.</li>
+						   <li>Respeta al resto de los usuarios.</li>
+						   <li>Cada nickname va asociado a un color, este cambia en funcion del orden de entrada al chat.</li>
+						   <li>El numero maximo de participantes es de 20.</li>
+						   <li>Para cualquier consulta, sugerencia, denuncia o ayuda en general puedes contactarnos en la seccion <a href="/help">ayuda</a>.</li>
+						</ul>
+					 </div>
+				  </div>
+			   </div>
+			</div>
+		 </div>
+	  </section>
+	  
+	  <!-- Pie de pagina -->
 	  <section id="location-sec">
 		 <div class="container">
 			<div class="row text-center min-set">
@@ -53,7 +58,8 @@
                   &
                   <a href="https://github.com/alu0100207385/SYTW_p6" target="_blank" style="color: #fff; font-size: 18px;">Aarón José Vera Cerdeña</a>
 				  <hr class="sub-hr">
-				  <a href="help" style="color: #fff; font-size: 14px;">Help</a>
+				  Sistema y Tecnología Web
+				  <br><a href="http://www.ull.es/" target="_blank" style="color: #fff;font-size: 18px;">ULL</a> - <a href="http://www.ull.es/view/centros/etsii/Inicio/es" target="_blank" style="color: #fff;font-size: 18px;">ETSII</a>
 				  <br>Copyright ©2014
                 </div>
             </div>

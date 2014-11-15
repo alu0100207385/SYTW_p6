@@ -12,6 +12,10 @@ get '/chat' do
    erb :chat
 end
 
+get '/help' do
+   erb :help
+end
+
 get '/send' do
   return [404, {}, "Not an ajax request"] unless request.xhr?
   chat << "#{request.ip} : #{params['text']}"
