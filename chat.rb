@@ -3,7 +3,7 @@ require 'sinatra/reloader' if development?
 #set :port, 3000
 #set :environment, :production
 
-chat = ['welcome..']
+chat = ['Bienvenido..']
 
 get('/') { erb :index }
 
@@ -12,6 +12,9 @@ get '/chat' do
    erb :chat
 end
 
+get '/help' do
+    erb :help
+end
 get '/send' do
   return [404, {}, "Not an ajax request"] unless request.xhr?
   chat << "#{request.ip} : #{params['text']}"
