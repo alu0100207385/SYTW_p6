@@ -7,6 +7,13 @@ $('#text').keypress(
   }
 );
 
+$('#bsend').click(
+  function(){
+      $.get('/send',{text:$('#text').val()});
+      $('#text').val('');
+  }
+);
+
 (function() {
   var last = 0;
   setInterval(

@@ -31,7 +31,6 @@
 				  Si su nick ya esta en uso por otro usuario, debe escoger otro para poder
 				  participar. Recuerde respetar las normas del chat.
 			   </p>
-<!--           <a class="btn btn-primary btn-lg btn-home" href="#ingreso">Ingresar en chat &nbsp; <i class="fa fa-toggle-on"></i></a> -->
 		 </div>
 	  </div>
 	  <div id="login"></div>
@@ -39,23 +38,25 @@
 </div>
 
 <!--LOGIN-->
-
 <section id="skill-sec">
    <div class="overlay">
 	  <div class="container">
-		 <div class="row">
+		 <div class="row text-center">
+			<div id="warning-message" style="color:black">
+			   <% if @control == 1 %>
+				  <p class="bg-danger">Ese nick esta en uso. Elija otro.</p>
+			   <% elsif @control == 2 %>
+				  <p class="bg-danger">La sala de chat esta llena. Vuelva a intentarlo mas tarde.</p>
+			   <% end %>
+			</div>
 			<form role="form">
 			   <div class="form-group">
 				  <h4>Para ingresar, introduce un nickname</h4>
-				  <input type="text" class="form-control" placeholder="Nickname">
+				  <label for="name"></label>
+				  <input id="nick" type="text" class="form-control" placeholder="Nickname">
 			   </div>
 			   <a class="btn btn-info" href="/chat" role="button">Enter to the chat!</a>
 			</form>
-<!--			<div class="col-lg-3 col-md-3 col-sm-3 text-center">
-			   <i class="fa fa-user fa-5x"></i>
-			   <h4>Enter your nickname</h4>
-			</div>
--->
 		 </div>
 	  </div>
    </div>
