@@ -8,10 +8,10 @@ $('#text').keypress(
 );
 
 $('#bsend').click(
-  function(){
-      $.get('/send',{text:$('#text').val()});
-      $('#text').val('');
-  }
+   function(){
+	  $.get('/send',{text:$('#text').val()});
+	  $('#text').val('');
+   }
 );
 
 (function() {
