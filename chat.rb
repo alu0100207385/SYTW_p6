@@ -4,7 +4,7 @@ require 'sinatra/reloader' if development?
 #set :port, 3000
 #set :environment, :production
 
-chat = ["welcome.."]
+chat = ['Bienvenido..']
 
 MAX = 20;
 
@@ -36,7 +36,7 @@ end
 
 
 get '/help' do
-   erb :help
+    erb :help
 end
 
 get '/send' do

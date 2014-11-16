@@ -32,6 +32,15 @@ body {
     -webkit-border-radius: 10px;
 }
 
+.head-glowi {
+    background-color: rgba(66, 139, 202, 0.8);
+    color: white;
+    padding: 0px 5px 0px 20px;
+    margin: 0px 15px 0px 8px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
 section {
     padding-top: 50px;
     padding-bottom: 50px;
