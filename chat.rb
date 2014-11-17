@@ -5,13 +5,13 @@ require 'sinatra/reloader' if development?
 # set :environment, :production, :development
 
 MAX = 20 #Usuarios maximos en la sala de chat
-# enable :sessions
-# set :session_secret, '*&(^#234a)'
 
 chat = ['Bienvenido..']
 
 users_color =['#F7FE2E','#A9F5A9','#58ACFA','#3A01DF','#610B5E','#DF3A01','#3B170B','#01DFD7','#FE2EC8','#FA5858',
                   '#BF00FF','#585858','#B18904','#9FF781','#FF0040','#F6CECE','#585858','#0B0B3B','#1C1C1C','#F4FA58']
+enable :sessions
+set :session_secret, '*&(^#234a)'
 
 users_on = Array.new
 nickname = String.new
@@ -40,6 +40,7 @@ get '/chat' do
    else
 	  nickname = nick
 	  users_on << nick
+	  session[:nickname] = nickname
 	  control = 0
 	  puts "usuarios ===== #{users_on}"
 	  puts "control ===== #{control}"
@@ -49,10 +50,10 @@ end
 
 get '/logout' do
 #    @users_on.find_index (@nick)
-#    session.clear
+   nickname = session[:nickname]
    users_on.delete (nickname)
-   nickname = ""
-   @control = control = 0
+   session.clear
+   control = 0
    redirect '/'
 end
 
