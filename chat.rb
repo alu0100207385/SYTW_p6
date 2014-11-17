@@ -2,47 +2,58 @@ require 'sinatra'
 require 'sinatra/flash'
 require 'sinatra/reloader' if development?
 #set :port, 3000
-#set :environment, :production
+# set :environment, :production, :development
+
+MAX = 20 #Usuarios maximos en la sala de chat
+# enable :sessions
+# set :session_secret, '*&(^#234a)'
 
 chat = ['Bienvenido..']
 
-MAX = 20;
+users_color =['#F7FE2E','#A9F5A9','#58ACFA','#3A01DF','#610B5E','#DF3A01','#3B170B','#01DFD7','#FE2EC8','#FA5858',
+                  '#BF00FF','#585858','#B18904','#9FF781','#FF0040','#F6CECE','#585858','#0B0B3B','#1C1C1C','#F4FA58']
+
+users_on = Array.new
+nickname = String.new
+control = 0
 
 get('/') do
-   @control = 0
+   puts "usuarios ===== #{users_on}"
+   puts "control ===== #{control}"
    erb :index
 end
 
 get '/chat' do
-   @users_on = ['Aaron']
-   @users_color =['#F7FE2E','#A9F5A9','#58ACFA','#3A01DF','#610B5E','#DF3A01','#3B170B','#01DFD7','#FE2EC8','#FA5858',
-                  '#BF00FF','#585858','#B18904','#9FF781','#FF0040','#F6CECE','#585858','#0B0B3B','#1C1C1C','#F4FA58']
-#    puts "****************: #{params}"
-#    puts "****************: #{params[:nick]}"
    nick = params[:nick]
    if (nick == "")
-	  @control = 3
+	  @control = control = 3
 	  erb :index
 # 	  redirect '/'
-   elsif (@users_on.include? nick)
-	  @control = 1
+   elsif (users_on.include? nick)
+	  @control = control = 1
 	  erb :index
 # 	  flash[:notice] = %Q{<h3>Ese nick esta en uso. Elija otro.</h3> &#60; <a href="/">Volver</a> }
-	elsif (@users_on.length == MAX)
-	  @control = 2
+	elsif (users_on.length == MAX)
+	  @control = control = 2
 	  erb :index
 # 	  flash[:notice] = %Q{<h3>La sala de chat esta llena. Vuelva a intentarlo mas tarde.</h3> &#60; <a href="/">Volver</a> } 
    else
+	  nickname = nick
+	  users_on << nick
+	  control = 0
+	  puts "usuarios ===== #{users_on}"
+	  puts "control ===== #{control}"
 	  erb :chat
    end
-=begin
-   puts "CONTROL= #{@control}"
-   if (@control == 1) or (@control == 2)
-	  redirect '/'
-   else
-	  erb :chat
-   end
-=end
+end
+
+get '/logout' do
+#    @users_on.find_index (@nick)
+#    session.clear
+   users_on.delete (nickname)
+   nickname = ""
+   @control = control = 0
+   redirect '/'
 end
 
 
