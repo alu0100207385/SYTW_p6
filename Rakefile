@@ -37,7 +37,7 @@ end
 
 desc "Run tests in local machine"
 task :local_tests do
-   sh "gnome-terminal -x sh -c 'rackup' && sh -c 'ruby test/test.rb local'"
+   sh "gnome-terminal -x sh -c 'ruby chat.rb' && sh -c 'ruby test/test.rb local'"
 end
 
 desc "Open repository"
