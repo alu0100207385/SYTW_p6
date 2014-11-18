@@ -124,11 +124,24 @@ describe "Test Chat App: Comprobacion de paginas y enlaces" do
 	  assert_equal(@site, @browser.current_url)
    end
    
+   it "I can access Contact page across Help page" do
+	  @browser.find_element(:id,"help").click
+	  @browser.manage.timeouts.implicit_wait = 3
+	  @browser.find_element(:id,"contact").click
+	  @browser.manage.timeouts.implicit_wait = 3
+	  assert_equal("https://github.com/alu0100207385/SYTW_p6/issues/2", @browser.current_url)
+   end
+   
 end
 
 describe "Test Chat App: Comprobacion de control" do
-
+#Introduciendo un usuario sin error
+   #Introduciendo cadena invalida
+   #Introduciendo usuario ya logueado
+   #Introduciendo usuario y desloguear
 end
 
 describe "Test Chat App: Funcionalidades" do
+   #Introducir cadena y leerla
+   #Buscar usuarios
 end

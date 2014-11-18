@@ -14,7 +14,8 @@ enable :sessions
 set :session_secret, '*&(^#234a)'
 
 users_on = Array.new
-nickname = String.new
+# nickname = String.new
+nickname = ""
 control = 0
 
 get('/') do
@@ -25,27 +26,37 @@ end
 
 get '/chat' do
    nick = params[:nick]
-   if (nick == "")
+#    puts "NICK= #{nick.class}"
+   if (nick.is_a? NilClass)
+	  redirect '/auth/failure'
+   elsif (nick == "")
+# 	  puts "11111111111"
 	  @control = control = 3
 	  erb :index
-# 	  redirect '/'
+   # 	  redirect '/'
    elsif (users_on.include? nick)
+# 	  puts "22222222222"
 	  @control = control = 1
 	  erb :index
 # 	  flash[:notice] = %Q{<h3>Ese nick esta en uso. Elija otro.</h3> &#60; <a href="/">Volver</a> }
-	elsif (users_on.length == MAX)
+   elsif (users_on.length == MAX)
+# 	  puts "33333333333"
 	  @control = control = 2
 	  erb :index
-# 	  flash[:notice] = %Q{<h3>La sala de chat esta llena. Vuelva a intentarlo mas tarde.</h3> &#60; <a href="/">Volver</a> } 
+   # 	  flash[:notice] = %Q{<h3>La sala de chat esta llena. Vuelva a intentarlo mas tarde.</h3> &#60; <a href="/">Volver</a> } 
    else
+# 	  puts "44444444444444444"
 	  nickname = nick
 	  users_on << nick
 	  session[:nickname] = nickname
 	  control = 0
-	  puts "usuarios ===== #{users_on}"
-	  puts "control ===== #{control}"
+# 		 puts "usuarios ===== #{users_on}"
+# 		 puts "control ===== #{control}"
 	  erb :chat
    end
+#    if (:url != "/chat?nick=#{nick}")
+# 	  redirect '/auth/failure'
+#    end
 end
 
 get '/logout' do
