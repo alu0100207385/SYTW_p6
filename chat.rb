@@ -18,8 +18,8 @@ nickname = String.new
 control = 0
 
 get('/') do
-   puts "usuarios ===== #{users_on}"
-   puts "control ===== #{control}"
+#    puts "usuarios ===== #{users_on}"
+#    puts "control ===== #{control}"
    erb :index
 end
 
