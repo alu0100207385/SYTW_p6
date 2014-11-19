@@ -52,6 +52,7 @@ Las opciones posibles son:
 * [Ayuda](http://nereida.deioc.ull.es/~lpp/perlexamples/node499.html#section:jquerychat)
 * [Ejemplo_chat](https://github.com/crguezl/chat-blazee)
 * [Coveralls](http://nereida.deioc.ull.es/~lpp/perlexamples/node314.html#section:coveralls)
+* [Text Color](https://github.com/fazibear/colorize)
 
 -------------------------
 *Aarón Socas Gaspar && Aarón José Vera Cerdeña- Sistemas y Tecnologías Web (Curso 2014-2015)*

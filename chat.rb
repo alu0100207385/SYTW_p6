@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/flash'
 require 'sinatra/reloader' if development?
+require 'colorize'
 #set :port, 3000
 # set :environment, :production, :development
 
@@ -8,8 +9,9 @@ MAX = 20 #Usuarios maximos en la sala de chat
 
 chat = ['Bienvenido..']
 
-users_color =['#F7FE2E','#A9F5A9','#58ACFA','#3A01DF','#610B5E','#DF3A01','#3B170B','#01DFD7','#FE2EC8','#FA5858',
-                  '#BF00FF','#585858','#B18904','#9FF781','#FF0040','#F6CECE','#585858','#0B0B3B','#1C1C1C','#F4FA58']
+# users_color =['#F7FE2E','#A9F5A9','#58ACFA','#3A01DF','#610B5E','#DF3A01','#3B170B','#01DFD7','#FE2EC8','#FA5858', '#BF00FF','#585858','#B18904','#9FF781','#FF0040','#F6CECE','#585858','#0B0B3B','#1C1C1C','#F4FA58']
+color = [:black,:red,:green,:yellow,:blue,:magenta,:cyan,:white,:default,:light_black,
+         :light_red,:light_green,:light_yellow,:light_blue,:light_magenta,:light_cyan,:light_white]
 enable :sessions
 set :session_secret, '*&(^#234a)'
 
@@ -39,6 +41,7 @@ get '/login' do
 	  nickname = nick
 	  users_on << nick
 	  session[:nickname] = nickname
+	  session[:color] = rand(color.size)
 	  control = 0
 	  redirect '/chat'
    end
@@ -68,9 +71,11 @@ get '/help' do
 end
 
 get '/send' do
+   nick = session[:nickname]
 #    puts "-----------#{session[:nickname]}"
    return [404, {}, "Not an ajax request"] unless request.xhr?
-   chat << "#{request.ip} : #{params['text']}"
+   chat << "#{nick} : #{params['text']}"
+#    chat << "#{request.ip} : #{params['text']}"
    nil
 end
 
