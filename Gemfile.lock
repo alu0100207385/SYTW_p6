@@ -4,7 +4,6 @@ GEM
     backports (3.6.4)
     childprocess (0.5.5)
       ffi (~> 1.0, >= 1.0.11)
-    colorize (0.7.3)
     daemons (1.1.9)
     eventmachine (1.0.3)
     ffi (1.9.6)
@@ -49,7 +48,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  colorize
   minitest
   rack-test
   rake

@@ -5,7 +5,7 @@ require 'sinatra/reloader' if development?
 #set :port, 3000
 # set :environment, :production, :development
 
-MAX = 20 #Usuarios maximos en la sala de chat
+MAX = 50 #Usuarios maximos en la sala de chat
 
 chat = ['Bienvenido..']
 

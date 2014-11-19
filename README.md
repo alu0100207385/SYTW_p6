@@ -14,7 +14,7 @@ Podemos acceder a la aplicación subida a heroku desde [aqui](https://sytw6.hero
 
 ##Tests
 
-[![Build Status](https://travis-ci.org/alu0100207385/SYTW_p6.svg?branch=testing)](https://travis-ci.org/alu0100207385/SYTW_p6)
+[![Build Status](https://travis-ci.org/alu0100207385/SYTW_p6.svg?branch=tests)](https://travis-ci.org/alu0100207385/SYTW_p6)
 
 Podemos probar la aplicación ejecutando los tests. Podemos hacerlo en nuestra maquina local mediante la opción: 
 `rake local_tests` o bien accediendo a los resultados en [travis](https://travis-ci.org/alu0100207385/SYTW_p6/builds/39286192).
