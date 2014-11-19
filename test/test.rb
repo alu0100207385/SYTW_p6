@@ -137,6 +137,7 @@ end
 describe "Test Chat App: Comprobacion de control" do
 #Introduciendo un usuario sin error
    #Introduciendo cadena invalida
+   #Ruta invalida
    #Introduciendo usuario ya logueado
    #Introduciendo usuario y desloguear
 end
