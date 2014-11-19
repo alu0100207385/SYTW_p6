@@ -50,6 +50,7 @@ end
 get '/chat' do
 #    puts "-----------#{session[:nickname]}"
    if (session[:nickname] != nil)
+	  @lista = users_on
 	  erb :chat
    else
 	  redirect '/auth/failure'
