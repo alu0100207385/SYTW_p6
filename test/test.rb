@@ -11,7 +11,7 @@ include Rack::Test::Methods
 def app
    Sinatra::Application
 end
-=begin
+
 describe "Test Chat App: Comprobacion de paginas y enlaces" do
    
    before :all do
@@ -207,7 +207,7 @@ describe "Test Chat App: Comprobacion de control" do
    end
 end
 
-=end
+
 describe "Test Chat App: Funcionalidades" do
    
    before :all do
@@ -224,24 +224,33 @@ describe "Test Chat App: Funcionalidades" do
    after :all do
 	  @browser.quit
    end
-   
+
    it "##1. I am a user logged" do
 	  @browser.find_element(:id,"nickname").send_keys("Usuario4")
 	  @browser.manage.timeouts.implicit_wait = 2
 	  @browser.find_element(:id,"enter").click
 	  @browser.manage.timeouts.implicit_wait = 2
 	  element = @browser.find_element(:id,"listado").find_element(:xpath,'.//*[contains(.,"Usuario4")]').text
+	  @browser.find_element(:id,"exit").click
 	  assert_equal("Usuario4", element)
    end
-   
+
+=begin
    #Introducir cadena y leerla
    it "##2. Write and send messages" do
-	  @browser.get(@site+"chat")
+	  @browser.find_element(:id,"nickname").send_keys("Usuario5")
+	  @browser.manage.timeouts.implicit_wait = 3
+	  @browser.find_element(:id,"enter").click
+	  @browser.manage.timeouts.implicit_wait = 5
 	  @browser.find_element(:id,"text").send_keys("Selenium es util para las pruebas")
-	  @browser.manage.timeouts.implicit_wait = 2
-	  @browser.find_element(:id,"bsend").click
-	  @browser.manage.timeouts.implicit_wait = 2
-	  element = @browser.find_element(:id,"chat").find_element(:xpath,'.//*[contains(.,"Selenium")]').text
-	  assert_equal("Selenium es util para las pruebas", element)
+	  @browser.manage.timeouts.implicit_wait = 5
+	  @browser.send_keys:return
+# 	  @browser.find_element(:id,"bsend").click
+	  @browser.manage.timeouts.implicit_wait = 5
+# 	  puts "\n----#{@browser.find_element(:id,"chat").find_element(:xpath,'.//*[contains(.,"util")]').text}"
+	  element = @browser.find_element(:id,"chat").text
+	  @browser.find_element(:id,"exit").click
+	  assert_equal("Bienvenido..\nUsuario5 : Selenium es util para las pruebas", element)
    end
+=end
 end
