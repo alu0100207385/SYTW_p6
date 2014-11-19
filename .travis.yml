@@ -10,4 +10,4 @@ before_install:
    #- sudo apt-get install gnome-terminal
 branches:
   only:
-    - testing
+    - tests
