@@ -43,6 +43,10 @@ Las opciones posibles son:
 
 ```
 
+##Coveralls
+
+[![Coverage Status](https://img.shields.io/coveralls/alu0100207385/SYTW_p6.svg)](https://coveralls.io/r/alu0100207385/SYTW_p6)
+
 
 ##Recursos
 
