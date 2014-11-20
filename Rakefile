@@ -44,7 +44,13 @@ desc "Run coveralls"
 task :coveralls do
    sh "coveralls report"
 end
-
+=begin
+desc "Run specs"
+task :spec do
+   sh "bundle exec rspec spec"
+#    sh "rspec -I. spec/chat_spec.rb"
+end
+=end
 desc "Open repository"
 task :repo do
   sh "gnome-open https://github.com/alu0100207385/sytw_p6"

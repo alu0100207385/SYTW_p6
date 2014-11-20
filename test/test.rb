@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
+=begin
 require 'coveralls'
 Coveralls.wear!
+=end
 require_relative '../chat.rb'
 require 'test/unit'
 require 'minitest/autorun'
@@ -238,42 +240,24 @@ describe "Test Chat App: Funcionalidades" do
 	  @browser.manage.timeouts.implicit_wait = 2
 	  @browser.find_element(:id,"enter").click
 	  @browser.manage.timeouts.implicit_wait = 2
-	  element = @browser.find_element(:id,"listado").find_element(:xpath,'.//*[contains(.,"Usuario4")]').text
+	  element = @browser.find_element(:id,"listado").text
 	  @browser.find_element(:id,"exit").click
 	  assert_equal("Usuario4", element)
    end
 
-
-=begin
    #Introducir cadena y leerla
    it "##2. Write and send messages" do
 	  @browser.find_element(:id,"nickname").send_keys("Usuario5")
 	  @browser.manage.timeouts.implicit_wait = 3
 	  @browser.find_element(:id,"enter").click
-# 	  @browser.manage.timeouts.implicit_wait = 5
-# 	  puts "-->#{@browser.find_element(:id,"text")}"
+	  @browser.manage.timeouts.implicit_wait = 5
 	  @browser.find_element(:id,"text").send_keys("Selenium es util para las pruebas")
-	  wait = Selenium::WebDriver::Wait.new(:timeout => 10) # seconds
-	  begin
-		 element = wait.until { @browser.find_element(:id => "bsend") }
-	  ensure
-		 element.click
-	  end
-	  begin
-		 element = wait.until { @browser.find_element(:id => "chat") }
-	  ensure
-		 element = element.text
-	  end
-# 		 element.send_keys("Selenium es util para las pruebas")
-# 		 @browser.find_element(:id,"bsend").send_keys:return
-# 		 @browser.find_element(:id,"bsend").click
-# 	  @browser.find_element(:id,"text").send_keys("Selenium es util para las pruebas")
-# 	  @browser.send_keys:return
-# 	  @browser.find_element(:id,"bsend").click
-# 	  puts "\n----#{@browser.find_element(:id,"chat").find_element(:xpath,'.//*[contains(.,"util")]').text}"
-# 	  element = @browser.find_element(:id,"chat").text
+	  sleep(3)
+	  @browser.find_element(:id => "bsend").click
+	  sleep(3)
+	  element = @browser.find_element(:id => "chat").text
+	  @browser.manage.timeouts.implicit_wait = 3
 	  @browser.find_element(:id,"exit").click
-	  assert_equal("Bienvenido..\nUsuario5 : Selenium es util para las pruebas", element)
+	  assert_equal("Bienvenido..\n127.0.0.1 : Selenium es util para las pruebas", element)
    end
-=end
 end
