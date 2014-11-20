@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-require 'coveralls'
-Coveralls.wear!
+# require 'coveralls'
+# Coveralls.wear!
 require_relative '../chat.rb'
 require 'test/unit'
 require 'minitest/autorun'
