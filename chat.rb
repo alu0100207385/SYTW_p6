@@ -59,8 +59,8 @@ end
 
 get '/logout' do
 #    @users_on.find_index (@nick)
-   nickname = session[:nickname]
-   users_on.delete (nickname)
+#    nickname = session[:nickname]
+   users_on.delete (session[:nickname])
    session.clear
    control = 0
    redirect '/'
@@ -75,9 +75,8 @@ get '/send' do
 #    nick = session[:nickname]
 #    puts "-----------#{session[:nickname]}"
    return [404, {}, "Not an ajax request"] unless request.xhr?
-#    chat << "#{nick} : #{params['text']}"
-#    puts "Chuchu".colorize(color[rand(color.size)])
-    chat << "#{request.ip} : #{params['text']}"
+   chat << "#{session[:nickname]} : #{params['text']}"
+#    chat << "#{request.ip} : #{params['text']}"
    nil
 end
 
