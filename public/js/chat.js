@@ -23,15 +23,15 @@ $('#text').keypress(
 })();
 
 
-function LogOut() {
-   $.get('/logout');
-   $.get('/');
-};
-
-
 $('#bsend').click(
    function(){
 	  $.get('/send',{text:$('#text').val()});
 	  $('#text').val('');
    }
 );
+
+
+function LogOut() {
+   $.get('/logout');
+   $.get('/');
+};

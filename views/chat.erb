@@ -25,24 +25,22 @@
    #box{ margin-top: 55px;}
 </style>
 
-<div class="container" id="box">
+<div class="container" id="box" onunload="LogOut()">
    <div class="row">
 	  <div class="col-md-9">
 		 <div class="panel panel-primary">
 			<div class="panel-heading" id="accordion">
-			   <span class="glyphicon glyphicon-comment"></span>Chat
-			   <form id="enter" class="form-inline" role="form">
-				  <div id="chat" class="form-group">
-				  </div>
-				  <div class="panel-footer">
+			   <span class="glyphicon glyphicon-comment">Chat <%= session[:nickname] %></span>
+<!-- 			   <form id="enter" class="form-inline" role="form"> -->
+				  <div id="chat" class="form-group"></div>
+				  <div id="enter" class="panel-footer">
 					 <div class="input-group">
-						<input id="text" type="text" class="form-control input-sm" placeholder="Escribe un mensaje" />
+					<input id="text" type="text" class="form-control input-md" placeholder="Escribe un mensaje" />
 						<span class="input-group-btn">
-					    <button id="bsend" type="submit" class="btn btn-default">Send</button>
+						   <button id="bsend" class="btn btn-default">Send</button>
+						</span>
 					 </div>
 				  </div>
-			   </form>
-			   </span>
 			</div>
 		 </div>
 	  </div>
@@ -50,18 +48,12 @@
 		 <div class="panel panel-primary">
 			<div class="panel-heading" id="accordion">
 			   <span>Usuarios ON</span>
-			   <div id="usuarios" class="form-group">
-				  <!-- <label for="inputMessage" class="sr-only">Write then press Enter</label> -->
-			   </div>
+			   <div class="form-group"></div>
 			   <div id="listado" class="panel-footer" style="color:black">
 				  <% @lista.each do |n| %>
-				  <li>
-					 <%= n %>
-				  </li>
+					 <%= n %><br>
 				  <% end %>
-<!-- 				  <div class="input-group"></div> -->
 			   </div>
-			   </span>
 			</div>
 		 </div>
 	  </div>

@@ -19,6 +19,12 @@ Podemos acceder a la aplicación subida a heroku desde [aqui](https://sytw6.hero
 Podemos probar la aplicación ejecutando los tests. Podemos hacerlo en nuestra maquina local mediante la opción: 
 `rake local_tests` o bien accediendo a los resultados en [travis](https://travis-ci.org/alu0100207385/SYTW_p6/builds/39286192).
 
+
+##Coveralls
+
+[![Coverage Status](https://coveralls.io/repos/alu0100207385/SYTW_p6/badge.png?branch=tests)](https://coveralls.io/r/alu0100207385/SYTW_p6?branch=tests)
+
+
 ##Instalación
 
 1. Instalaremos las gemas necesarias: `bundle install`
@@ -40,13 +46,9 @@ Las opciones posibles son:
 7. rake server       # run the chat server
 8. rake sinatra      # Run the server via Sinatra
 9. rake tests        # Run tests (default)
+10. rake coveralls   # Run coveralls
 
 ```
-
-##Coveralls
-
-[![Coverage Status](https://img.shields.io/coveralls/alu0100207385/SYTW_p6.svg)](https://coveralls.io/r/alu0100207385/SYTW_p6)
-
 
 ##Recursos
 
