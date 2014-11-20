@@ -11,7 +11,7 @@ include Rack::Test::Methods
 def app
    Sinatra::Application
 end
-
+=begin
 describe "Test Chat App: Comprobacion de paginas y enlaces" do
    
    before :all do
@@ -131,7 +131,6 @@ describe "Test Chat App: Comprobacion de paginas y enlaces" do
 	  @browser.manage.timeouts.implicit_wait = 3
 	  assert_equal("https://github.com/alu0100207385/SYTW_p6/issues/2", @browser.current_url)
    end
-   
 end
 
 
@@ -175,7 +174,9 @@ describe "Test Chat App: Comprobacion de control" do
 	  @browser.manage.timeouts.implicit_wait = 2
 	  @browser.find_element(:id,"enter").click
 	  @browser.manage.timeouts.implicit_wait = 2
-	  assert_equal(true, @browser.find_element(:id,"bsend").displayed?)
+	  element = @browser.find_element(:id,"bsend").displayed?
+	  @browser.find_element(:id,"exit").click
+	  assert_equal(true, element)
    end
    
    #Introduciendo usuario ya logueado
@@ -193,6 +194,10 @@ describe "Test Chat App: Comprobacion de control" do
 	  @browser.find_element(:id,"enter").click
 	  @browser.manage.timeouts.implicit_wait = 2
 	  element = @browser.find_element(:id,"warning-message").text
+	  body = @browser.find_element(:tag_name => 'body')
+	  body.send_keys(:control, 'w')
+	  @browser.manage.timeouts.implicit_wait = 2
+	  @browser.find_element(:id,"exit").click
 	  assert_equal("Ese nick esta en uso. Elija otro.", element)
    end
 
@@ -207,7 +212,7 @@ describe "Test Chat App: Comprobacion de control" do
    end
 end
 
-
+=end
 describe "Test Chat App: Funcionalidades" do
    
    before :all do
@@ -224,7 +229,7 @@ describe "Test Chat App: Funcionalidades" do
    after :all do
 	  @browser.quit
    end
-
+=begin
    it "##1. I am a user logged" do
 	  @browser.find_element(:id,"nickname").send_keys("Usuario4")
 	  @browser.manage.timeouts.implicit_wait = 2
@@ -235,20 +240,35 @@ describe "Test Chat App: Funcionalidades" do
 	  assert_equal("Usuario4", element)
    end
 
+=end
 =begin
    #Introducir cadena y leerla
    it "##2. Write and send messages" do
 	  @browser.find_element(:id,"nickname").send_keys("Usuario5")
 	  @browser.manage.timeouts.implicit_wait = 3
 	  @browser.find_element(:id,"enter").click
-	  @browser.manage.timeouts.implicit_wait = 5
+# 	  @browser.manage.timeouts.implicit_wait = 5
+# 	  puts "-->#{@browser.find_element(:id,"text")}"
 	  @browser.find_element(:id,"text").send_keys("Selenium es util para las pruebas")
-	  @browser.manage.timeouts.implicit_wait = 5
-	  @browser.send_keys:return
+	  wait = Selenium::WebDriver::Wait.new(:timeout => 10) # seconds
+	  begin
+		 element = wait.until { @browser.find_element(:id => "bsend") }
+	  ensure
+		 element.click
+	  end
+	  begin
+		 element = wait.until { @browser.find_element(:id => "chat") }
+	  ensure
+		 element = element.text
+	  end
+# 		 element.send_keys("Selenium es util para las pruebas")
+# 		 @browser.find_element(:id,"bsend").send_keys:return
+# 		 @browser.find_element(:id,"bsend").click
+# 	  @browser.find_element(:id,"text").send_keys("Selenium es util para las pruebas")
+# 	  @browser.send_keys:return
 # 	  @browser.find_element(:id,"bsend").click
-	  @browser.manage.timeouts.implicit_wait = 5
 # 	  puts "\n----#{@browser.find_element(:id,"chat").find_element(:xpath,'.//*[contains(.,"util")]').text}"
-	  element = @browser.find_element(:id,"chat").text
+# 	  element = @browser.find_element(:id,"chat").text
 	  @browser.find_element(:id,"exit").click
 	  assert_equal("Bienvenido..\nUsuario5 : Selenium es util para las pruebas", element)
    end
