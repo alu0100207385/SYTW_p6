@@ -12,7 +12,7 @@ end
 group :test do
    gem 'rack-test'
    gem 'rake'
-   gem 'rspec'
+#    gem 'rspec'
    gem 'minitest'
    gem 'test-unit'
    gem 'selenium-webdriver','2.43.0'

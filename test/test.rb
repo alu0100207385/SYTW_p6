@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+require 'coveralls'
+Coveralls.wear!
 require_relative '../chat.rb'
 require 'test/unit'
 require 'minitest/autorun'
@@ -11,7 +13,8 @@ include Rack::Test::Methods
 def app
    Sinatra::Application
 end
-=begin
+
+
 describe "Test Chat App: Comprobacion de paginas y enlaces" do
    
    before :all do
@@ -212,7 +215,7 @@ describe "Test Chat App: Comprobacion de control" do
    end
 end
 
-=end
+
 describe "Test Chat App: Funcionalidades" do
    
    before :all do
@@ -229,7 +232,7 @@ describe "Test Chat App: Funcionalidades" do
    after :all do
 	  @browser.quit
    end
-=begin
+
    it "##1. I am a user logged" do
 	  @browser.find_element(:id,"nickname").send_keys("Usuario4")
 	  @browser.manage.timeouts.implicit_wait = 2
@@ -240,7 +243,7 @@ describe "Test Chat App: Funcionalidades" do
 	  assert_equal("Usuario4", element)
    end
 
-=end
+
 =begin
    #Introducir cadena y leerla
    it "##2. Write and send messages" do

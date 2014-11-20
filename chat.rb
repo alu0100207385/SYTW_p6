@@ -26,7 +26,7 @@ get('/') do
    erb :index
 end
 
-get '/login' do
+post '/login' do
    nick = params[:nick]
    if (nick == "")
 	  @control = control = 3

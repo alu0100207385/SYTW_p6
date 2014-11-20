@@ -7,12 +7,6 @@ $('#text').keypress(
   }
 );
 
-$('#bsend').click(
-   function(){
-	  $.get('/send',{text:$('#text').val()});
-	  $('#text').val('');
-   }
-);
 
 (function() {
   var last = 0;
@@ -27,3 +21,17 @@ $('#bsend').click(
     },
   1000);
 })();
+
+
+function LogOut() {
+   $.get('/logout');
+   $.get('/');
+};
+
+
+$('#bsend').click(
+   function(){
+	  $.get('/send',{text:$('#text').val()});
+	  $('#text').val('');
+   }
+);

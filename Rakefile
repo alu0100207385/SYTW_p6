@@ -40,6 +40,11 @@ task :local_tests do
    sh "gnome-terminal -x sh -c 'ruby chat.rb' && sh -c 'ruby test/test.rb local'"
 end
 
+desc "Run coveralls"
+task :coveralls do
+   sh "coveralls report"
+end
+
 desc "Open repository"
 task :repo do
   sh "gnome-open https://github.com/alu0100207385/sytw_p6"
