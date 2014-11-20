@@ -38,9 +38,8 @@ post '/login' do
 	  @control = control = 2
 	  erb :index
    else
-	  nickname = nick
 	  users_on << nick
-	  session[:nickname] = nickname
+	  session[:nickname] = nick
 # 	  session[:color] = rand(color.size)
 	  control = 0
 	  redirect '/chat'
@@ -61,6 +60,9 @@ get '/logout' do
 #    @users_on.find_index (@nick)
 #    nickname = session[:nickname]
    users_on.delete (session[:nickname])
+   if (users_on.size == 1)
+	  users_on.clear
+   end
    session.clear
    control = 0
    redirect '/'
@@ -90,7 +92,7 @@ get '/update' do
 	  <% @updates.each do |phrase| %>
 		 <%= phrase %> <br />
 	  <% end %>
-	  <span data-last="<%= @last %>"></span>
+	  <span id="out" data-last="<%= @last %>"></span>
   HTML
 end
 
