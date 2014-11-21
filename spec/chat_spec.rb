@@ -81,6 +81,11 @@ describe "Test Chat App: Comprobacion de metodos" do
 	  get '/chat'
 	  expect(last_response.body).to eq("")
    end
+   
+   it "Actualizamos los usuarios" do
+	  get '/update_users'
+	  expect(last_response.body).to eq("Not an ajax request")
+   end
 
    
 end

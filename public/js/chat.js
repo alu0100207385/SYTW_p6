@@ -20,6 +20,16 @@ $('#text').keypress(
       );
     },
   1000);
+   setInterval(
+	  function(){
+		 $.get('/update_users',{},
+			function(response){
+			   $('#listado').empty();
+			   $('#listado').append(response);
+			   }
+			);
+	  },
+	  1000);
 })();
 
 
@@ -33,5 +43,4 @@ $('#bsend').click(
 
 function LogOut() {
    $.get('/logout');
-   $.get('/');
 };

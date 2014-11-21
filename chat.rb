@@ -61,14 +61,17 @@ get '/logout' do
 #    @users_on.find_index (@nick)
 #    nickname = session[:nickname]
    users_on.delete (session[:nickname])
-   if (users_on.size == 1)
-	  users_on.clear
-   end
    session.clear
    control = 0
    redirect '/'
 end
-
+=begin
+get '/clean' do #Para mis pruebas
+   users_on.clear
+   session.clear
+   redirect '/'
+end
+=end
 
 get '/help' do
    erb :help
@@ -93,9 +96,20 @@ get '/update' do
 	  <% @updates.each do |phrase| %>
 		 <%= phrase %> <br />
 	  <% end %>
-	  <span id="out" data-last="<%= @last %>"></span>
+	  <span data-last="<%= @last %>"></span>
   HTML
 end
+
+get '/update_users' do
+   return [404, {}, "Not an ajax request"] unless request.xhr?
+   @lista = users_on
+   erb <<-'HTML', :layout => false
+	  <% @lista.each do |user| %>
+		 <%= user %><br>
+	  <% end %>
+   HTML
+end
+
 
 get '/auth/failure' do
   flash[:notice] =
