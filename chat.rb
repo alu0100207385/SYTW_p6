@@ -37,6 +37,7 @@ post '/login' do
    elsif (users_on.length == MAX)
 	  @control = control = 2
 	  erb :index
+#    elsif (!nick.is_a? NilClass)
    else
 	  users_on << nick
 	  session[:nickname] = nick

@@ -61,12 +61,26 @@ describe "Test Chat App: Comprobacion de metodos" do
 	  expect(last_response.body).to eq("Not an ajax request")
    end
    
-=begin
+
+   it "Podemos enviar: post" do
+	  post '/login' , :nick => "Usuario"
+	  expect(last_response.body).to eq("")
+   end
+   
+   it "Podemos enviar: post" do
+	  post '/login' , :nick => ""
+	  expect(last_response).to be_ok
+   end
+
    it "Podemos enviar: post" do
 	  post '/login' , :nick => "Usuario"
 	  expect(last_response).to be_ok
    end
-##Una funcion para controlar cada if
-=end
+   
+   it "Podemos enviar: post" do
+	  get '/chat'
+	  expect(last_response.body).to eq("")
+   end
+
    
 end
